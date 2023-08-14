@@ -31,7 +31,7 @@ const appLoader = (app: Express, router: Router) => new Promise<boolean>(resolve
       });
 
       server.listen(PORT,()=>{
-        console.log(`App is running on ${ process.env.PORT }`);
+        console.log(`App is running on ${ PORT }`);
         resolve(true);
       })
     });
