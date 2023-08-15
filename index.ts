@@ -1,6 +1,7 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
+import cookieParser from 'cookie-parser'; 
 
 import { appLoader } from "./src/loaders";
 import { databaseLoader } from "./src/loaders";
@@ -18,6 +19,7 @@ process.on("unhandledRejection",
   });
 
 const app = express();
+app.use(cookieParser());
 
 databaseLoader()
 .then(() => {
