@@ -2,10 +2,10 @@ import { Types } from 'mongoose';
 
 export interface IReqUser {
     user: {
-        resetPassword: {
-            token: string,
-            isUsed: boolean
-        },
+        // resetPassword: {
+        //     token: string,
+        //     isUsed: boolean
+        // },
     _id : Types.ObjectId,
     name: string,
     email: string,
@@ -17,5 +17,6 @@ export interface IReqUser {
     _v: number,
     subscribers: number,
     subscribedUsers: string,
-    fromGoogle: boolean}
+    fromGoogle: boolean
+}
 }

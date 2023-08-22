@@ -1,9 +1,9 @@
 import { USER } from '../../models';
 
-type T2 = Awaited<Promise<PromiseLike<object | null>>>
+type T = Awaited<Promise<PromiseLike<object | null>>>
 
 export const updateUser = (search: object, update:object, options?: object) => {
-   return new Promise<T2>((resolve, reject)=>{
+   return new Promise<T>((resolve, reject)=>{
         USER.findOneAndUpdate(search, update, options)
         .select('-password')
         .then(resolve)

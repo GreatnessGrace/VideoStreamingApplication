@@ -114,3 +114,26 @@ export const loginJoi = (req:Request, res: Response, next:NextFunction)=>{
     next();
   };
   
+  export const likeVideoJoi = (req: Request, res: Response, next: NextFunction) => {
+    const { error } = Joi.object()
+    .keys({
+        id : Joi.string()
+        .hex()
+        .required()
+    }).validate(req.params);
+    if(error){   return makeResponse(req, res, statusCode.badRequest, false, error.details[0].message, undefined);
+    }
+    next();
+ }
+  
+  export const dislikeVideoJoi = (req: Request, res: Response, next: NextFunction) => {
+    const { error } = Joi.object()
+    .keys({
+        id : Joi.string()
+        .hex()
+        .required()
+    }).validate(req.params);
+    if(error){   return makeResponse(req, res, statusCode.badRequest, false, error.details[0].message, undefined);
+    }
+    next();
+ }
