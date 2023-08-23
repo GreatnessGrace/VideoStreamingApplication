@@ -77,4 +77,18 @@ router.post('/login', loginJoi, async(req:Request,res:Response): Promise<number 
     return makeResponse(req, res, statusCode.badRequest, false, err.message );  
 }
 })
+
+router.post('/logout', async (req: Request, res: Response): Promise<number | object | null | undefined> => {
+    try {
+        res.clearCookie('token');
+
+        return makeResponse(req, res, statusCode.successful, true, 'Logged out successfully', undefined);
+    } catch (error) {
+        const err = error instanceof Error ? error : {
+            message: 'An unknown error occurred'
+        };
+        return makeResponse(req, res, statusCode.badRequest, false, err.message);
+    }
+});
+
 export const authRouter = router;

@@ -1,9 +1,10 @@
 import { NextFunction, Request, Response } from 'express';
 import { verify } from 'jsonwebtoken';
 import { statusCode, IReqUser } from '../../lib';
+import { Iuser } from '../../lib/interface/user';
 
 interface ExtendedRequest extends Request {
-    user?: any; // Change 'string' to the actual type of your user object
+    user?: IReqUser; 
 }
 
 export const verifyToken = (req: ExtendedRequest, res: Response, next: NextFunction) => {
@@ -19,7 +20,7 @@ export const verifyToken = (req: ExtendedRequest, res: Response, next: NextFunct
                 message: 'Unauthorized'
             });
         }
-        req.user = (decoded as IReqUser).user;
+        req.user = (decoded as IReqUser);
         next();
     })
 }
