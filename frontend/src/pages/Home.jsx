@@ -11,7 +11,11 @@ const Home = () => {
     // Fetch trending videos from API
     fetch("http://localhost:3000/videos/trend")
       .then((res) => res.json())
-      .then((data) => setVideos(data));
+      .then((data) => {
+        console.log(data); // Log the response data to inspect its structure
+        setVideos(data.videos || data); // If data has a 'videos' key, use that
+      })
+      .catch((error) => console.error('Error fetching videos:', error));
   }, []);
 
   return (
@@ -20,7 +24,7 @@ const Home = () => {
       <div className="flex">
         <Sidebar />
         <div className="flex-1 p-4 grid grid-cols-4 gap-4">
-          {videos.map((video) => (
+          {Array.isArray(videos) && videos.map((video) => (
             <VideoCard key={video.id} video={video} />
           ))}
         </div>
