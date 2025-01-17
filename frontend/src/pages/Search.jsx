@@ -20,7 +20,7 @@ const Search = () => {
     <div>
       <Navbar />
       <div className="p-4 grid grid-cols-4 gap-4">
-        {results.map((video) => (
+      {Array.isArray(results) && results.map((video) => (
           <VideoCard key={video.id} video={video} />
         ))}
       </div>
