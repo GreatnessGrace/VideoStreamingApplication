@@ -10,6 +10,14 @@ import SignUp from "./pages/Signup";
 import Subscription from "./pages/Subscriptions";
 import VideoDetail from "./pages/VideoDetail";
 
+const sampleVideo = {
+  id: "Ke90Tje7VS0", 
+  title: "React JS Crash Course 2023",
+  description: "Learn React.js from scratch in this beginner-friendly crash course.",
+};
+
+
+
 const App = () => {
   const routes = useRoutes([
     { path: "/", element: <Home /> },
@@ -20,7 +28,7 @@ const App = () => {
     { path: "*", element: <NotFound /> },
     { path: "/signup", element: <SignUp /> },
     { path: "/subscription", element: <Subscription /> },
-    // { path: "/video-detail", element: <VideoDetail video={sampleVideo} /> },
+    { path: "/video-detail", element: <VideoDetail video={sampleVideo} /> },
    
   ]);
 
